@@ -1,5 +1,4 @@
 ## Multer Azure Blob Storage
-[![npm version](https://badge.fury.io/js/multer-azure-blob-storage.svg)](https://badge.fury.io/js/multer-azure-blob-storage) [![Build Status](https://app.travis-ci.com/symphonicc/multer-azure-blob-storage.svg?branch=master)](https://app.travis-ci.com/github/symphonicc/multer-azure-blob-storage)
 
 ES6 &amp; Typescript friendly [Multer](https://github.com/expressjs/multer) storage engine for Azure's blob storage.
 
@@ -22,7 +21,7 @@ yarn add multer-az-storage-blob
 Leverages strong typings
 ``` javascript
 import * as multer from 'multer';
-import { MulterAzureStorage, MASNameResolver } from 'multer-azure-blob-storage';
+import { MulterAzureStorage, MASNameResolver } from 'multer-az-storage-blob';
 
 const resolveBlobName: MASNameResolver = (req: any, file: Express.Multer.File): Promise<string> => {
     return new Promise<string>((resolve, reject) => {
@@ -71,13 +70,13 @@ app.post('/documents', upload.any(), (req: Request, res: Response, next: NextFun
 Common.js style imports
 ```javascript
 const multer = require('multer')
-const MulterAzureStorage = require('multer-azure-blob-storage').MulterAzureStorage;
+const MulterAzureStorage = require('multer-az-storage-blob').MulterAzureStorage;
 ```
 
 E6 style imports
 ``` javascript
 import * as multer from 'multer';
-import { MulterAzureStorage } from 'multer-azure-blob-storage';
+import { MulterAzureStorage } from 'multer-az-storage-blob';
 ```
 
 Rest of the JS code
@@ -144,7 +143,7 @@ Key | Description | Note
 `url` | The full url to access the uploaded blob/file. | obtained from 'BlockBlobClient'
 
 ### Configuration object
-Details of the configuration object that needs to be passed into the constructor of the MulterAzureStorage class. MulterAzureStorageBlob was adapted from MulterAzureBlobStorage, a package using an older blob storage dependency. All attempts were made to ensure backward compatibility for code using the alternate so many configuration variables are not required or can be passed via environment variables instead.
+Details of the configuration object that needs to be passed into the constructor of the MulterAzureStorage class. When dependency migrated from older azure blob package, all attempts were made to ensure backward compatibility for code using the alternate so many configuration variables are not required or can be passed via environment variables instead.
 
 | Parameter Name | Type | Note | Sample Value |
 |---|---|---|---|
