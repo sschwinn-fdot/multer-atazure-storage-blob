@@ -1,6 +1,6 @@
 {
   "name": "multer-az-storage-blob",
-  "version": "1.0.01",
+  "version": "1.0.02",
   "description": "ES5/6 & Typescript friendly multer storage engine for Azure's blob storage using @azure/storage-blob.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -43,7 +43,7 @@
     "typescript": "^4.7.4"
   },
   "dependencies": {
-    "@azure/identity": "^3.2.3",
+    "@azure/identity": "^4.4.1",
     "@azure/storage-blob": "^12.14.0",
     "express": "^4.18.1",
     "multer": "^1.4.5-lts.1",
