@@ -10,7 +10,7 @@ import { v4 } from "uuid";
 import { extname } from "path";
 import { Request } from "express";
 import { StorageEngine } from "multer";
-import { BlobServiceClient, StorageSharedKeyCredential, BlockBlobUploadStreamOptions, ContainerCreateResponse } from "@azure/storage-blob";
+import { BlobServiceClient, StorageSharedKeyCredential, BlockBlobUploadStreamOptions, ContainerCreateResponse, BlobGetPropertiesHeaders } from "@azure/storage-blob";
 import { DefaultAzureCredential } from "@azure/identity";
 
 // Custom types
@@ -42,6 +42,7 @@ export interface MulterOutFile extends Express.Multer.File {
     blobType: string;
     blobSize: string;
     container: string;
+    originalBlobPropertiesResponse: BlobGetPropertiesHeaders;
 }
 
 // Custom error class
@@ -242,7 +243,8 @@ export class MulterAzureStorage implements StorageEngine {
                         blobType: blobProperties.blobType,
                         metadata: blobProperties.metadata,
                         container: blockBlobClient.containerName,
-                        blobSize: blobProperties.contentLength?.toString()
+                        blobSize: blobProperties.contentLength?.toString(),
+                        originalBlobPropertiesResponse: blobProperties
                     };
                 const finalFile: Partial<MulterOutFile> = Object.assign({}, file, intermediateFile);
                 callback(null, finalFile);
