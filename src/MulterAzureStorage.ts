@@ -42,7 +42,7 @@ export interface MulterOutFile extends Express.Multer.File {
     blobType: string;
     blobSize: string;
     container: string;
-    originalBlobPropertiesResponse: BlobGetPropertiesHeaders;
+    originalBlobPropertiesResponse?: BlobGetPropertiesHeaders;
 }
 
 // Custom error class

@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "watch": false,
+        "skipLibCheck": true,        
         "noImplicitAny": true,
         "target": "es5",
         // The 'commonjs' specification is needed in order to transpile

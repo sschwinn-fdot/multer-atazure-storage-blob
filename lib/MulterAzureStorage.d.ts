@@ -1,10 +1,11 @@
 import { Request } from "express";
 import { StorageEngine } from "multer";
-export declare type MetadataObj = {
+import { BlobGetPropertiesHeaders } from "@azure/storage-blob";
+export type MetadataObj = {
     [k: string]: string;
 };
-export declare type MASNameResolver = (req: Request, file: Express.Multer.File) => Promise<string>;
-export declare type MASObjectResolver = (req: Request, file: Express.Multer.File) => Promise<Object>;
+export type MASNameResolver = (req: Request, file: Express.Multer.File) => Promise<string>;
+export type MASObjectResolver = (req: Request, file: Express.Multer.File) => Promise<Object>;
 export interface IMASOptions {
     authenticationType?: 'azure ad' | 'sas token' | 'connection string' | 'account name and key' | undefined | null;
     sasToken?: string;
@@ -26,6 +27,7 @@ export interface MulterOutFile extends Express.Multer.File {
     blobType: string;
     blobSize: string;
     container: string;
+    originalBlobPropertiesResponse?: BlobGetPropertiesHeaders;
 }
 export declare class MASError implements Error {
     name: string;
